@@ -5,12 +5,13 @@ require 'pry'
 
 class Tomatoes
 
-  def self.tomatoes
+  def tomato_scraper
     doc = Nokogiri::HTML(open("https://www.swallowtailgardenseeds.com/veggies/heirloom.html"))
-
-
-    @@seedsavers = HTTParty.get("https://www.seedsavers.org/category/tomato")
-    @@tomatoes = Nokogiri::HTML(@@seedsavers)
+    doc.css(".https://www.swallowtailgardenseeds.com/veggies/heirloom.html").each do |tomato|
+      binding.pry
+    end
+    # @@seedsavers = HTTParty.get("https://www.seedsavers.org/category/tomato")
+    # @@tomatoes = Nokogiri::HTML(@@seedsavers)
 
   end
 
