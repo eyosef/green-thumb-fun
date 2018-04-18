@@ -30,17 +30,15 @@ class Tomatoes
                 if string == " Indeterminate" || string == " Determinate"
                     @growth_type = string #for db
                     #making variable instance variable to call on it outside of the each iterator
-                elsif !string.include?("days")
+                elsif !string.include?("days") && !string.include?(" Ind") && !string.include?(" Compact Ind") && !string.include?(" “If only")
                   @details << string
                 elsif string.include?("days")
                   array = []
                   split_string = string.split(" ")
                   days = split_string[0..1].join(" ")
                   @days = days
-                  binding.pry
                 end #if statement
             end #each iteration, split_content
-
 
       end #each iterator, @@tomatoes
   end #scraper method
