@@ -5,7 +5,7 @@ gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
-gem 'sqlite3'
+gem 'pg', '~> 0.18.4'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
@@ -15,7 +15,8 @@ gem 'nokogiri'
 gem 'httparty', '~> 0.13.7'
 gem 'heroku', '~> 3.99', '>= 3.99.1'
 
-group :test do
+group :development, :test do
+  gem 'sqlite3'
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
