@@ -58,7 +58,10 @@ class Tomatoes
                 @@all << tomato
             end #each iteration, split_content
       end #each iterator, @@tomatoes
-
   end #scraper method
+
+  def self.all
+    @@all
+  end
 
 end #Tomatoes class
