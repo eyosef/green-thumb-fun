@@ -12,7 +12,7 @@ class Tomatoes
     @@seedsavers = HTTParty.get("https://www.seedsavers.org/amish-paste-tomato")
     @@tomatoes = Nokogiri::HTML(@@seedsavers)
 
-    @@tomatoes.css(".item-details").each do |tomato|
+    @@tomatoes.css(".item-characteristics").each do |tomato|
       binding.pry
     end
 

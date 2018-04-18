@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem "tux"
 gem 'nokogiri'
 gem 'httparty', '~> 0.13.7'
+gem 'heroku', '~> 3.99', '>= 3.99.1'
 
 group :test do
   gem 'rspec'
