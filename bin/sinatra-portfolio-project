@@ -2,4 +2,4 @@
 
 require_relative '../lib/tomatoes'
 
-Tomatoes.new.tomato_scraper
+Tomatoes.new.scraper1
