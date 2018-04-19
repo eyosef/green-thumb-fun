@@ -4,4 +4,7 @@ if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 
+use TomatoScraperController
+use TomatoController
+use UserController
 run ApplicationController
