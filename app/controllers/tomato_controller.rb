@@ -2,9 +2,7 @@ class TomatoController < ApplicationController
 
   get '/tomatoes/all' do
     @all_tomatoes = Tomato.all
-    #START FROM HERE!
-    #consider: conditional that only returns tomatoes from @all_tomatoes
-    #if the user.tomato_id is equal to the tomato.id
+
     erb :'tomatoes/show_tomatoes'
   end
 
@@ -27,10 +25,15 @@ class TomatoController < ApplicationController
   end
 
   get '/tomatoes/:id/edit' do
-    @tomato = Tomato.find_by(params["id"].to_i)
-    @user = User.find_by(session["user_id"])
+
+    @tomato = Tomato.find_by_id(params["id"].to_i)
+    @user = User.find_by_id(session["user_id"])
 
     erb :'tomatoes/edit_tomato'
+  end
+
+  post '/tomatoes/:id' do
+    binding.pry
   end
 
 end
