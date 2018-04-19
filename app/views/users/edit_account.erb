@@ -1,20 +1,22 @@
 <form action="/edit_account" method="POST">
   <h2>Your Current User Information:</h2>
   <br></br>
-  <p>Username: <%=@user.username%></p>
-  <p>Email: <%=@user.email%></p>
+  <p><strong>Username: </strong><%=@user.username%></p>
+  <p><strong>Email: </strong><%=@user.email%></p>
   <br></br>
 
   <h2>Update Your Account Below:</h2>
-  <label>Username: <label>
+  <p><Strong>Please note: </strong>submitting a form with an empty</p>
+  <p>entry will result in being redirected back to this page.</p>
+  <label><strong>Username: </strong><label>
   <input type="text" name="username" id="username" value="<%@user.username%>">
   <br></br>
 
-  <label>Password: </label>
+  <label><strong>Password: </strong></label>
   <input type="password" name="password" id="password" value="<%@user.password%>">
   <br></br>
 
-  <label>Email Address:</label>
+  <label><strong>Email Address: </strong></label>
   <input type="text" name="email" id="email" value="<%@user.email%>">
   <br></br>
 
