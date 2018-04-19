@@ -1,7 +1,8 @@
 class TomatoController < ApplicationController
 
-  get '/signup' do
-    erb :'users/new_user'
+  get '/all_plants' do
+    binding.pry
+    erb :'tomatoes/show_tomatoes'
   end
 
 end
