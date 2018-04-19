@@ -33,7 +33,6 @@ class UserController < ApplicationController
 
   post '/login' do
     @user = User.find_by(username: params["username"])
-    binding.pry
     if @user && @user.password_digest == params["password"]
       redirect to "/user_profile_page"
     else
@@ -46,13 +45,26 @@ class UserController < ApplicationController
     erb :'users/profile_page'
   end
 
+  post '/edit_account' do
+    if params["username"] == "" || params["username"] == " "
+      redirect to "/edit_account"
+    elsif params["password"] == "" || params["password"] == " "
+      redirect to "/edit_account"
+    elsif params["email"] == "" || params["email"] == " "
+      redirect to "/edit_account"
+    else
+      @user = User.find_by_id(session["user_id"])
+      @user.username = params["username"]
+      @user.password_digest = params["password"]
+      @user.email = params["email"]
+      @user.save
+      erb :'users/profile_page'
+    end
+  end
+
   get '/edit_account' do
     @user = User.find_by_id(session["user_id"])
     erb :'users/edit_account'
-  end
-
-  post '/edit_account' do
-    binding.pry
   end
 
 end #class
