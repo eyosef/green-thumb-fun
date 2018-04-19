@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418195947) do
+ActiveRecord::Schema.define(version: 20180419132920) do
 
   create_table "tomatoes", force: :cascade do |t|
     t.string "variety"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 20180418195947) do
 
   create_table "users", force: :cascade do |t|
     t.string  "username"
-    t.string  "password"
+    t.string  "password_digest"
     t.integer "tomato_id"
+    t.string  "email"
   end
 
 end
