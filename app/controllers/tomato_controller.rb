@@ -13,8 +13,7 @@ class TomatoController < ApplicationController
     @tomato.save
 
     @user = User.find_by_id(session["user_id"])
-    @tomato.id = @user.tomato_id
-    @user.tomato_id = @tomato.id
+    #@tomato.id = @user.tomato_id #PROBLEM, tomato id is overwritten by user.tomato_id's nil
 
     erb :'tomatoes/show_tomato'
   end
@@ -24,9 +23,10 @@ class TomatoController < ApplicationController
   end
 
   get '/tomatoes/:id/edit' do
-    binding.pry
     @tomato = Tomato.find_by(params["id"].to_i)
     @user = User.find_by(session["user_id"])
+
+    erb :'tomatoes/edit_tomato'
   end
 
 end
