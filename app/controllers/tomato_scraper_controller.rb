@@ -5,7 +5,7 @@ require 'pry'
 
 class TomatoScraperController < ApplicationController
 
-  # attr_accessor :variety, :days, :growth_type, :details
+  attr_accessor :variety, :days, :growth_type, :details
 
   @@all = []
 
@@ -16,7 +16,7 @@ class TomatoScraperController < ApplicationController
   #   @details = details
   # end
 
-  def scraper
+  def self.scraper
     @@seedsavers = HTTParty.get("https://www.fedcoseeds.com/seeds/?cat=Tomatoes")
     @@tomatoes = Nokogiri::HTML(@@seedsavers)
 
@@ -47,12 +47,12 @@ class TomatoScraperController < ApplicationController
                   days = split_string[0..1].join(" ")
                   @the_days = days #FOR DB
                 end #if statement
-                # tomato = Tomatoes.new
-                # tomato.days = @the_days
-                # tomato.growth_type = @the_growth_type
-                # tomato.details = @the_details
-                # tomato.variety = @the_variety
-                # @@all << tomato
+                tomato = Tomatoes.new
+                tomato.days = @the_days
+                tomato.growth_type = @the_growth_type
+                tomato.details = @the_details
+                tomato.variety = @the_variety
+                @@all << tomato
 
                 Tomato.new(:variety => @the_variety, :growth_type => @the_growth_type, :days => @the_days, :details => @the_details).save
             end #each iteration, split_content
