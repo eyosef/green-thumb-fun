@@ -21,6 +21,7 @@ class UserController < ApplicationController
         @user.password_digest = params["password"]
         @user.email = params["email"]
         @user.save
+        binding.pry
         session["user_id"] = @user.id
 
         redirect to "/user_profile_page"
