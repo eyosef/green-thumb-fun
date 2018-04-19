@@ -18,12 +18,12 @@ class UserController < ApplicationController
       else
         @user = User.new
         @user.username = params["username"]
-        @user.password = params["password"]
+        @user.password_digest = params["password"]
         @user.email = params["email"]
         @user.save
-        @user.id = session["user_id"]
+        session["user_id"] = @user.id
 
-        redirect to "/users/profile_page"
+        redirect to "/user_profile_page"
       end
   end
 
