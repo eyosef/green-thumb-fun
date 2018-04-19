@@ -1,0 +1,22 @@
+<form action="/edit_account" method="POST">
+  <h2>Your Current User Information:</h2>
+  <br></br>
+  <p>Username: <%=@user.username%></p>
+  <p>Email: <%=@user.email%></p>
+  <br></br>
+
+  <h2>Update Your Account Below:</h2>
+  <label>Username: <label>
+  <input type="text" name="username" id="username" value="<%@user.username%>">
+  <br></br>
+
+  <label>Password: </label>
+  <input type="password" name="password" id="password" value="<%@username.password%>">
+  <br></br>
+
+  <label>Email Address:</label>
+  <input type="text" name="email" id="email" value="<%@username.email%>">
+  <br></br>
+
+  <input type="submit" name="submit" value="Update Your Account">
+</form>
