@@ -1,0 +1,30 @@
+<form action="/tomatoes/<%=@tomato.id%>" method="POST">
+  <br></br>
+  <h3>Current Information on the <%=@tomato.variety%> Variety:</h3>
+
+  <p><strong>Variety: </strong> <%=@tomato.variety%>
+  <br><strong>Growth Type: </strong><%=@tomato.growth_type%>
+  <br><strong>Days: </strong><%=@tomato.days%>
+  <br><strong>Details: </strong><%=@tomato.details%></p>
+  <br></br>
+
+  <h3>Update the <%=@tomato.variety%> Variety Below:</h3>
+
+  <label><strong>Variety: </strong></label>
+  <input type="text" name="variety" id="variety">
+  <br></br>
+
+  <label><strong>Growth Type: </strong></label>
+  <input type="text" name="growth_type" id="growth_type">
+  <br></br>
+
+  <label><strong>Days: </strong></label>
+  <input type="text" name="days" id="days">
+  <br></br>
+
+  <label><strong>Details: </strong></label>
+  <input type="text" name="details" id="details">
+  <br></br>
+
+  <input type="submit" name="submit" value="Update Variety">
+</form>
