@@ -24,18 +24,16 @@ class UserController < ApplicationController
         @user.save
         session["user_id"] = @user.id
 
-        redirect to "/user_profile_page"
+        redirect to "/user/#{@user.slug}"
       end
   end
 
   get '/login' do
-    if logged_in
-      @user = User.find_by_id(session["user_id"])
-      binding.pry
-      redirect to "/user/#{@user.slug}"
-    else
+    # if logged_in
+    #   @user = User.find_by_id(session["user_id"])
+    #   redirect to "/user/#{@user.slug}"
+    # else
       erb :'users/login'
-    end
   end
 
   post '/login' do
@@ -48,7 +46,7 @@ class UserController < ApplicationController
   end
 
   get '/user/:slug' do
-    @user = User.find_by_id(session["user_id"])
+    @user = User.find_by_slug(params["slug"])
 
     erb :'users/profile_page'
   end
