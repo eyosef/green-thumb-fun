@@ -23,7 +23,8 @@ class UserController < ApplicationController
         redirect to "/signup"
       elsif params["email"] == "" || params["email"] == " "
         redirect to "/signup"
-      elsif @wrong_username || @wrong_email
+      elsif !@wrong_username.empty? || !@wrong_email.empty?
+        params.clear
         flash[:info_taken] = "It looks like the username or email address already belongs to another user. Please try again."
         erb :'users/new_user'
       else
