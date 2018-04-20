@@ -60,4 +60,15 @@ class TomatoController < ApplicationController
     erb :'tomatoes/show_tomato'
   end
 
+  delete '/tomatoes/:id/delete' do
+
+    @tomato = Tomato.find_by_id(params["id"])
+    @user = User.find_by_id(@tomato.user_id)
+
+    if @tomato.user_id == @user.id
+      @tomato.delete
+      redirect to "/user/#{@user.slug}"
+    end
+  end
+
 end
