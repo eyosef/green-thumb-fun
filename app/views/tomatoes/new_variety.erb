@@ -1,23 +1,26 @@
-<form action="/tomatoes/new" method="POST">
+<br></br>
+<form action="/tomatoes" method="POST">
   <h3>Contribute to the Plant Library!</h3>
   <br></br>
 
-  <label>Variety: </label>
+  <label><strong>Variety: </strong></label>
   <input type="text" name="variety">
   <br></br>
 
-  <label>Growth Type*: </label>
-  <input type="text" name="growth_type">
-  <br></br>
+  <label><strong>Growth Type*: </strong></label>
+  <input type="radio" name="indeterminate" value="indeterminate"> Indeterminate
+  <input type="radio" name="determinate" value="determinate"> Determinate<br>
+  <br>
 
-  <label>Days to Fruit:</label>
+  <label><strong>Days to Fruit: </strong></label>
   <input type="text" name="days">
   <br></br>
 
-  <label>Details:</label>
-  <input type="text" name="details">
+  <p><strong>Details: </strong></p>
+  <textarea id="detail" name="details" placeholder="Feel free to include information like the flavor profile, average size, history and more!" rows="5" cols="50">
+  </textarea>
   <br></br>
-
+  <br></br>
   <input type="submit" name="submit" value="Submit">
   <br></br>
 
