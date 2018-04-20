@@ -11,20 +11,23 @@
   <h3>Update the <%=@tomato.variety%> Variety Below:</h3>
 
   <label><strong>Variety: </strong></label>
-  <input type="text" name="variety" id="variety">
+  <input type="text" name="variety" id="variety" value="<%=@tomato.variety%>">
   <br></br>
 
-  <label><strong>Growth Type: </strong></label>
-  <input type="text" name="growth_type" id="growth_type">
-  <br></br>
+  <label><strong>Growth Type*: </strong></label>
+  <input type="radio" name="indeterminate" value="indeterminate"> Indeterminate
+  <input type="radio" name="determinate" value="determinate"> Determinate<br>
+  <br>
 
   <label><strong>Days: </strong></label>
-  <input type="text" name="days" id="days">
+  <input type="text" name="days" id="days" value="<%=@tomato.days%>">
   <br></br>
 
-  <label><strong>Details: </strong></label>
-  <input type="text" name="details" id="details">
+  <p><strong>Details: </strong></p>
+  <textarea id="detail" name="details" placeholder="Feel free to include information like the flavor profile, average size, history and more!" rows="5" cols="50">
+  </textarea>
   <br></br>
-
   <input type="submit" name="submit" value="Update Variety">
+  <br></br>
+  <br></br>
 </form>
