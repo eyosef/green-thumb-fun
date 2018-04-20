@@ -1,6 +1,10 @@
 <form action="/signup" method="POST">
   <h2>Create a User Account</h2>
   <br></br>
+  <% if flash.has?(:info_taken) %>
+      <%= flash[:info_taken] %>
+  <% end %>
+  <br></br>
 
   <label><strong>Username: </strong></label>
   <input type="text" id="username" name="username">
@@ -15,6 +19,6 @@
   <br></br>
 
   <input type="submit" id="submit" value="Create Your Account">
-  <p>Already have an account? Log-in <a href="/signup">here</a></p>
+  <p>Already have an account? Log-in <a href="/login">here</a></p>
 
 </form>
