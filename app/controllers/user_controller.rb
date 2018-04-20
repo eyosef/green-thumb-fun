@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
   get '/signup' do
       if logged_in
-        redirect to "/user_profile_page"
+        redirect to "/user/:id"
       else
         erb :'users/new_user'
       end
@@ -28,20 +28,25 @@ class UserController < ApplicationController
   end
 
   get '/login' do
-    erb :'users/login'
+    if logged_in
+      redirect to "/user/:id"
+    else
+      erb :'users/login'
+    end
   end
 
   post '/login' do
     @user = User.find_by(username: params["username"])
     if @user && @user.password_digest == params["password"]
-      redirect to "/user_profile_page"
+      redirect to "/user/:id"
     else
       redirect to "/login"
     end
   end
 
-  get '/user_profile_page' do
+  get '/user/:id' do
     @user = User.find_by_id(session["user_id"])
+
     erb :'users/profile_page'
   end
 
@@ -65,6 +70,13 @@ class UserController < ApplicationController
   get '/edit_account' do
     @user = User.find_by_id(session["user_id"])
     erb :'users/edit_account'
+  end
+
+  get '/logout' do
+      @user = User.find_by_id(session["user_id"])
+      if @user
+        redirect to "/"
+      end
   end
 
 end #class
