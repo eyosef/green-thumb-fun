@@ -17,7 +17,6 @@
       <br><strong>Days: </strong><%=tomato.days%>
       <br><strong>Details: </strong><%=tomato.details%></p>
       <a href="/tomatoes/<%=tomato.id%>/edit">Edit This Variety</a></p>
-      <br>
       <form action="/tomatoes/<%= tomato.id %>/delete" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Variety">
