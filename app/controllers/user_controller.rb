@@ -1,4 +1,8 @@
+require 'rack-flash'
+
 class UserController < ApplicationController
+
+  use Rack::Flash
 
   get '/signup' do
       # if logged_in
@@ -19,9 +23,8 @@ class UserController < ApplicationController
         redirect to "/signup"
       elsif params["email"] == "" || params["email"] == " "
         redirect to "/signup"
-      elsif @wrong_username
-        erb :'users/new_user'
-      elsif @wrong_email
+      elsif @wrong_username || @wrong_email
+        flash[:info_taken] = "It looks like the username or email address already belongs to another user. Please try again."
         erb :'users/new_user'
       else
         @user = User.new
@@ -84,7 +87,7 @@ class UserController < ApplicationController
   get '/logout' do
       @user = User.find_by_id(session["user_id"])
       if @user
-        redirect to "/"
+        erb :'welcome'
       end
   end
 
