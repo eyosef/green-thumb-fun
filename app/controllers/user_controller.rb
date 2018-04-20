@@ -5,12 +5,7 @@ class UserController < ApplicationController
   use Rack::Flash
 
   get '/signup' do
-      # if logged_in
-      #   @user = User.find_by_id(session["user_id"])
-      #   redirect to "/user/#{@user.slug}"
-      # else
         erb :'users/new_user'
-      # end
   end
 
   post '/signup' do
@@ -40,12 +35,7 @@ class UserController < ApplicationController
   end
 
   get '/login' do
-    # if logged_in
-    #   @user = User.find_by_id(session["user_id"])
-    #   redirect to "/user/#{@user.slug}"
-    # else
       erb :'users/login'
-    # end
   end
 
   post '/login' do
