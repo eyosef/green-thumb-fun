@@ -1,22 +1,28 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    binding.pry
-      if logged_in
-        @user = User.find_by_id(session["user_id"])
-        redirect to "/user/#{@user.slug}"
-      else
+      # if logged_in
+      #   @user = User.find_by_id(session["user_id"])
+      #   redirect to "/user/#{@user.slug}"
+      # else
         erb :'users/new_user'
-      end
+      # end
   end
 
   post '/signup' do
+      @wrong_username = User.where(:username => params["username"])
+      @wrong_email = User.where(:email => params["email"])
+
       if params["username"] == "" || params["username"] == " "
         redirect to "/signup"
       elsif params["password"] == "" || params["password"] == " "
         redirect to "/signup"
       elsif params["email"] == "" || params["email"] == " "
         redirect to "/signup"
+      elsif @wrong_username
+        erb :'users/new_user'
+      elsif @wrong_email
+        erb :'users/new_user'
       else
         @user = User.new
         @user.username = params["username"]
@@ -35,6 +41,7 @@ class UserController < ApplicationController
     #   redirect to "/user/#{@user.slug}"
     # else
       erb :'users/login'
+    # end
   end
 
   post '/login' do
