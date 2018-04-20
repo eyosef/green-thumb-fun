@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 
   get '/signup' do
+    binding.pry
       if logged_in
         @user = User.find_by_id(session["user_id"])
         redirect to "/user/#{@user.slug}"
