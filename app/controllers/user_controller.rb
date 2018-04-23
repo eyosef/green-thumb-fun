@@ -87,7 +87,7 @@ class UserController < ApplicationController
       @start_date = Date.today
 
       @current_month = Date.today.month
-      redirect to "calendars/calendar/#{@current_month}"
+      redirect to "calendar/#{@current_month}"
   end
 
   get '/calendar/:month' do
@@ -96,6 +96,14 @@ class UserController < ApplicationController
 
   get '/previous_month/:month' do
     @date = Date.parse(params["month"])
+    @end_of_prev_month = @date.beginning_of_month - 1
+    @prev_month = @end_of_prev_month.beginning_of_month
+
+    redirect to "calendar/prev/#{@prev_month.month}"
+  end
+
+  get '/calendar/prev/:prev_month'
+    binding.pry
   end
 
 end #class
