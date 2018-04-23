@@ -85,4 +85,13 @@ class UserController < ApplicationController
       end
   end
 
+  get '/calendar' do
+      @user = User.find_by_id(session["user_id"])
+      if @user
+        erb :'users/calendar'
+      else
+        redirect to "/login"
+      end
+  end
+
 end #class
