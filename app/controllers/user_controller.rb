@@ -84,7 +84,18 @@ class UserController < ApplicationController
   end
 
   get '/calendar' do
-      erb :'users/user_calendar'
+      @start_date = Date.today
+
+      @current_month = Date.today.month
+      redirect to "calendars/calendar/#{@current_month}"
+  end
+
+  get '/calendar/:month' do
+      erb :'calendars/user_calendar'
+  end
+
+  get '/previous_month/:month' do
+    @date = Date.parse(params["month"])
   end
 
 end #class
