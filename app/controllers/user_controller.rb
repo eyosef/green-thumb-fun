@@ -5,7 +5,7 @@ class UserController < ApplicationController
   use Rack::Flash
 
   get '/signup' do
-        erb :'users/new_user'
+      erb :'users/new_user'
   end
 
   post '/signup' do
@@ -45,13 +45,11 @@ class UserController < ApplicationController
 
   get '/slugify' do
     @user = User.find_by_id(session["user_id"])
-
     if @user
       redirect to "/user/#{@user.slug}"
     else
       erb :'/'
     end
-
   end
 
   post '/edit_account' do
@@ -86,12 +84,7 @@ class UserController < ApplicationController
   end
 
   get '/calendar' do
-      @user = User.find_by_id(session["user_id"])
-      if @user
-        erb :'users/calendar'
-      else
-        redirect to "/login"
-      end
+      erb :'users/user_calendar'
   end
 
 end #class
