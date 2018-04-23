@@ -9,7 +9,7 @@
   <h3><strong>Variety #<%="#{index}"%>: </strong><%=tomato.variety%></h3>
   <br><strong>Growth Type: </strong><%=tomato.growth_type%>
   <br><strong>Days: </strong><%=tomato.days%>
-  <strong>Details: </strong><br>
+  <br><strong>Details: </strong>
       <%if tomato.details%>
           <%split_details = tomato.details.split(".")%>
           <%split_details.each do |phrase|%>
