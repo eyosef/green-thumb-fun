@@ -15,6 +15,7 @@ gem 'nokogiri'
 gem 'httparty', '~> 0.13.7'
 gem 'heroku', '~> 3.99', '>= 3.99.1'
 gem 'rack-flash3'
+gem "simple_calendar", "~> 2.0"
 
 group :development, :test do
   gem 'sqlite3'
