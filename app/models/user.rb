@@ -2,6 +2,13 @@ class User < ActiveRecord::Base
 
   has_many :tomatoes
   has_secure_password
+  validates :username, presence: true
+  validates :username, uniqueness: true
+
+  validates :password, presence: true
+
+  validates :email, presence: true
+  validates :email, uniqueness: true
 
   def slug
     self.username.split(" ").join("-").downcase
