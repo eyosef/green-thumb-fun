@@ -9,28 +9,15 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-      @wrong_username = User.where(:username => params["username"])
-      @wrong_email = User.where(:email => params["email"])
+      @user = User.create(params)
 
-      if params["username"] == "" || params["username"] == " "
-        redirect to "/signup"
-      elsif params["password"] == "" || params["password"] == " "
-        redirect to "/signup"
-      elsif params["email"] == "" || params["email"] == " "
-        redirect to "/signup"
-      elsif !@wrong_username.empty? || !@wrong_email.empty?
-        params.clear
+      if @user.valid?
+        session.clear
+        session["user_id"] = @user.id
+        redirect to "/user/#{@user.slug}"
+      else
         flash[:info_taken] = "It looks like the username or email address already belongs to another user. Please try again."
         erb :'users/new_user'
-      else
-        @user = User.new
-        @user.username = params["username"]
-        @user.password_digest = params["password"]
-        @user.email = params["email"]
-        @user.save
-        session["user_id"] = @user.id
-
-        redirect to "/user/#{@user.slug}"
       end
   end
 
@@ -40,7 +27,9 @@ class UserController < ApplicationController
 
   post '/login' do
     @user = User.find_by(username: params["username"])
-    if @user && @user.password_digest == params["password"]
+    if @user && @user.authenticate(params["password"])
+      session.clear
+      session["user_id"] = @user.id
       redirect to "/user/#{@user.slug}"
     else
       redirect to "/login"
@@ -54,6 +43,7 @@ class UserController < ApplicationController
   end
 
   post '/edit_account' do
+
     if params["username"] == "" || params["username"] == " "
       redirect to "/edit_account"
     elsif params["password"] == "" || params["password"] == " "
@@ -78,6 +68,7 @@ class UserController < ApplicationController
   get '/logout' do
       @user = User.find_by_id(session["user_id"])
       if @user
+        session.clear
         erb :'welcome'
       end
   end
