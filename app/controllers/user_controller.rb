@@ -27,8 +27,8 @@ class UserController < ApplicationController
 
   post '/login' do
     @user = User.find_by(username: params["username"])
-    binding.pry
-    if @user && @user.authenticate(params["password"])
+
+    if @user && @user.password_digest == params["password"]
       session.clear
       session["user_id"] = @user.id
       redirect to "/user/#{@user.slug}"
@@ -41,6 +41,17 @@ class UserController < ApplicationController
     @user = User.find_by_slug(params["slug"])
 
     erb :'users/profile_page'
+  end
+
+  get '/slugify' do
+    @user = User.find_by_id(session["user_id"])
+
+    if @user
+      redirect to "/user/#{@user.slug}"
+    else
+      erb :'/'
+    end
+
   end
 
   post '/edit_account' do
