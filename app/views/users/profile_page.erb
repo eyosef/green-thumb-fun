@@ -15,7 +15,14 @@
       <p><strong>Variety: </strong><%=tomato.variety%>
       <br><strong>Growth Type: </strong><%=tomato.growth_type%>
       <br><strong>Days: </strong><%=tomato.days%>
-      <br><strong>Details: </strong><%=tomato.details%></p>
+      <br><strong>Details: </strong>
+          <%if tomato.details%>
+              <%tomato.details.split(" ")%>
+              <%binding.pry%>
+          <%end%>
+
+        </p>
+
       <a href="/tomatoes/<%=tomato.id%>/edit">Edit This Variety</a></p>
       <form action="/tomatoes/<%= tomato.id %>/delete" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
