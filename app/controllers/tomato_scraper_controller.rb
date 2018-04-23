@@ -5,17 +5,6 @@ require 'pry'
 
 class TomatoScraperController < ApplicationController
 
-  attr_accessor :the_variety, :the_days, :the_growth_type, :the_details
-  #
-  # @@all = []
-
-  # def initialize(variety = nil)
-  #   @variety = variety
-  #   @days = days
-  #   @growth_type = growth_type
-  #   @details = details
-  # end
-
   def self.scraper
     @@seedsavers = HTTParty.get("https://www.fedcoseeds.com/seeds/?cat=Tomatoes")
     @@tomatoes = Nokogiri::HTML(@@seedsavers)

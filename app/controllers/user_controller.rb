@@ -26,6 +26,8 @@ class UserController < ApplicationController
   end
 
   post '/login' do
+    Tomato.scraper
+
     @user = User.find_by(username: params["username"])
 
     if @user && @user.password_digest == params["password"]
