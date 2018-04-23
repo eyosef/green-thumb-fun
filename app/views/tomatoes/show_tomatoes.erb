@@ -4,12 +4,17 @@
 <p><a href="/tomatoes">Create</a> a New Variety of Tomato</p>
 <br>
 
-<h3>Current Tomato Varieties:</h3>
-<br>
-<%@all_tomatoes.each do |tomato|%>
-  <p><strong>Variety: </strong><%=tomato.variety%>
+<h2>Current Tomato Varieties:</h2>
+<%@all_tomatoes.each.with_index(1) do |tomato, index|%>
+  <h3><strong>Variety #<%="#{index}"%>: </strong><%=tomato.variety%></h3>
   <br><strong>Growth Type: </strong><%=tomato.growth_type%>
   <br><strong>Days: </strong><%=tomato.days%>
-  <br><strong>Details: </strong><%=tomato.details%></p>
-  <br>
+  <strong>Details: </strong><br>
+      <%if tomato.details%>
+          <%split_details = tomato.details.split(".")%>
+          <%split_details.each do |phrase|%>
+              <%=phrase%><br>
+          <%end%>
+      <%end%>
+      <br>
 <%end%>
