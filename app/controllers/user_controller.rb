@@ -9,6 +9,8 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
+      Tomato.scraper
+
       @user = User.create(params)
 
       if @user.valid?
