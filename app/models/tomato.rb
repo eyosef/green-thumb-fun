@@ -38,24 +38,10 @@ class Tomato < ActiveRecord::Base
             la_tomate = Tomato.new
             la_tomate.variety = the_variety
             la_tomate.days = days
-            la_tomate.growth_type = split_words.find{ |word| word == " Indeterminate" || word == "Indeterminate." || word == " Determinate"}
-            # la_tomate.details = split_content[2..-1].join(".")
+            la_tomate.growth_type = split_words.find{ |word| word == "Semi-Indeterminate." || word == " Indeterminate" || word == "Indeterminate." || word == " Determinate" || word == "Ind." || word == "Ind" || word == "Det."}
 
-            binding.pry
-            split_content.each do |string|
-
-                # if string == " Indeterminate" || string == " Determinate"
-                #     la_tomate.growth_type = string #FOR DB
-                # if !string.include?("days") && !string.include?(" Ind") && !string.include?(" Compact Ind") && !string.include?(" “If only")
-                #   the_details << string
-                #   new_details = the_details.join(".") #FOR DB
-                # if string.include?("days")
-                #   array = []
-                #   split_string = string.split(" ")
-                #   days = split_string[0..1].join(" ")
-                #   the_days = days #FOR DB
-                # end #if statement
-            end #each iteration, split_content
+            la_tomate.details = split_content.delete_if {|string|  string == " Semi-Indeterminate" || string == " Ind" || string == " Compact Ind" || string == " Indeterminate" || string == " Determinate" || string == " Vigorous Det" || string.include?("days")}
+            la_tomate.save
       end #each iterator, @@tomatoes
   end #scraper method
 
