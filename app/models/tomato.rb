@@ -37,13 +37,11 @@ class Tomato < ActiveRecord::Base
 
             la_tomate = Tomato.new
             la_tomate.variety = the_variety
-            la_tomate.growth_type = split_content.split(" ").each {|word| word == " Indeterminate" || word == " Determinate"}
             la_tomate.days = days
+            la_tomate.growth_type = split_words.find{ |word| word == " Indeterminate" || word == "Indeterminate." || word == " Determinate"}
             # la_tomate.details = split_content[2..-1].join(".")
 
-              binding.pry
-
-
+            binding.pry
             split_content.each do |string|
 
                 # if string == " Indeterminate" || string == " Determinate"
