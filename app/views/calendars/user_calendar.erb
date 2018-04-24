@@ -2,12 +2,9 @@
 
 <% start_date = Date.today %>
 <% date_range = (start_date.beginning_of_month..start_date.end_of_month).to_a %>
-<% @prev_month = start_date.beginning_of_month - 1%>
-<% @next_month = start_date.beginning_of_month + 1 %>
 
 <h3><%=start_date.month%> / <%=start_date.year%></h3>
 
-<p><a href="/previous_month/<%=@prev_month%>">Previous</a> - <a href="">Next</a></p>
 <table>
   <thead>
       <tr>
@@ -37,3 +34,6 @@
         <br></br>
   </tbody>
 </table>
+
+<br></br>
+<br></br>
