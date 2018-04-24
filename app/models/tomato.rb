@@ -20,9 +20,9 @@ class Tomato < ActiveRecord::Base
 
       tomatoes.css(".search-results-text").each do |tomato|
 
-          @the_details = []
+            the_details = []
 
-            @the_variety = tomato.css("a").children[0].text #for db
+            the_variety = tomato.css("a").children[0].text #for db
             content = tomato.css(".description").children.text
 
             split_words = content.split(" ")
@@ -32,25 +32,31 @@ class Tomato < ActiveRecord::Base
             split_content.delete("")
             split_content.delete("        read more")
 
+            split_days = split_content[0].split(" ")
+            days = split_days[0..1].join(" ")
+
+            la_tomate = Tomato.new
+            la_tomate.variety = the_variety
+            la_tomate.growth_type = split_content.split(" ").each {|word| word == " Indeterminate" || word == " Determinate"}
+            la_tomate.days = days
+            # la_tomate.details = split_content[2..-1].join(".")
+
+              binding.pry
+
+
             split_content.each do |string|
 
-                if string == " Indeterminate" || string == " Determinate"
-                    @the_growth_type = string #FOR DB
-                    #making variable instance variable to call on it outside of the each iterator
-                elsif !string.include?("days") && !string.include?(" Ind") && !string.include?(" Compact Ind") && !string.include?(" “If only")
-                  @the_details << string #FOR DB
-                elsif string.include?("days")
-                  array = []
-                  split_string = string.split(" ")
-                  days = split_string[0..1].join(" ")
-                  @the_days = days #FOR DB
-                end #if statement
-                tomato = Tomatoes.new
-                tomato.days = @the_days
-                tomato.growth_type = @the_growth_type
-                tomato.details = @the_details
-                tomato.variety = @the_variety
-                @@all << tomato
+                # if string == " Indeterminate" || string == " Determinate"
+                #     la_tomate.growth_type = string #FOR DB
+                # if !string.include?("days") && !string.include?(" Ind") && !string.include?(" Compact Ind") && !string.include?(" “If only")
+                #   the_details << string
+                #   new_details = the_details.join(".") #FOR DB
+                # if string.include?("days")
+                #   array = []
+                #   split_string = string.split(" ")
+                #   days = split_string[0..1].join(" ")
+                #   the_days = days #FOR DB
+                # end #if statement
             end #each iteration, split_content
       end #each iterator, @@tomatoes
   end #scraper method
