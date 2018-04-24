@@ -9,7 +9,6 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-      Tomato.scraper
 
       @user = User.create(params)
 
@@ -28,7 +27,6 @@ class UserController < ApplicationController
   end
 
   post '/login' do
-    Tomato.scraper
 
     @user = User.find_by(username: params["username"])
 
