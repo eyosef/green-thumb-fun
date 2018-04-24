@@ -22,6 +22,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    Tomato.scraper
+
     erb :welcome
   end
 
