@@ -10,7 +10,12 @@
   <br><strong>Growth Type: </strong><%=tomato.growth_type%>
   <br><strong>Days: </strong><%=tomato.days%>
   <br><strong>Details: </strong>
-      <%if tomato.details%>
+      <%if tomato.details.include?(",")%>
+          <%split_details = tomato.details.split(",")%>
+            <%split_details.each do |phrase|%>
+                <%=phrase%><br>
+            <%end%>
+      <%elsif tomato.details.include?(".")%>
           <%split_details = tomato.details.split(".")%>
           <%split_details.each do |phrase|%>
               <%=phrase%><br>
