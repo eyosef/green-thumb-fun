@@ -10,16 +10,18 @@
   <br><strong>Growth Type: </strong><%=tomato.growth_type%>
   <br><strong>Days: </strong><%=tomato.days%>
   <br><strong>Details: </strong>
-      <%if tomato.details.include?(",")%>
-          <%split_details = tomato.details.split(",")%>
-            <%split_details.each do |phrase|%>
-                <%=phrase%><br>
-            <%end%>
-      <%elsif tomato.details.include?(".")%>
-          <%split_details = tomato.details.split(".")%>
-          <%split_details.each do |phrase|%>
+      <%if tomato.details.include?(".")%>
+          <%split_periods = tomato.details.strip.split(".")%>
+            <%split_periods.each do |phrase|%>
               <%=phrase%><br>
           <%end%>
+      <%elsif tomato.details.include?(",")%>
+          <%split_commas = tomato.details.strip.split(",")%>
+            <%split_commas.each do |phrase|%>
+                <%=phrase%><br>
+            <%end%>
+      <%else%>
+          <%=tomato.details%><br>
       <%end%>
       <br>
 <%end%>
