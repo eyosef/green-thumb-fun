@@ -96,18 +96,4 @@ class UserController < ApplicationController
       erb :'calendars/user_calendar'
   end
 
-  get '/previous_month/:month' do
-    @date = Date.parse(params["month"])
-    @end_of_prev_month = @date.beginning_of_month - 1
-    @prev_month = @end_of_prev_month.beginning_of_month
-
-    redirect to "calendar/prev/#{@prev_month}"
-  end
-
-  get '/calendar/prev/:prev_month' do
-    @prev_month = Date.parse(params["prev_month"])
-
-    erb :'calendars/prev_month'
-  end
-
 end #class
