@@ -14,7 +14,8 @@ Use this app to access our Plant Database, submit varieties and track your submi
 
 ## Contributing
 
-Users are encouraged to contribute to this repository via [REPO LINK]. Feel free to get in touch directly with suggestions or updates regarding the contributions. Contributors are expected to follow the Contributor Covenant <a href="https://www.contributor-covenant.org/">Code of Conduct</a>.
+Users are encouraged to contribute to this repository
+<a href="https://github.com/eyosef/green-thumb-fun">here</a>. Feel free to get in touch directly with suggestions or updates regarding the contributions. Contributors are expected to follow the Contributor Covenant <a href="https://www.contributor-covenant.org/">Code of Conduct</a>.
 
 ## License
 
