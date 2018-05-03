@@ -3,7 +3,7 @@ class TomatoController < ApplicationController
   get '/tomatoes/all' do
     @all_tomatoes = Tomato.all
 
-    if logged_in #FIX
+    if logged_in
       erb :'tomatoes/show_tomatoes'
     else
       redirect to "/login"
