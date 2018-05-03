@@ -17,8 +17,11 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      session.include?("user_id")
+      if session.include?("user_id")
+        @user = User.find(session["user_id"])
+      end 
     end
+    
   end
 
   get '/' do

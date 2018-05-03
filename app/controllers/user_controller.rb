@@ -30,7 +30,8 @@ class UserController < ApplicationController
 
     @user = User.find_by(username: params["username"])
 
-    if @user && @user.password_digest == params["password"]
+    if @user && @user.authenticate(params["password"])
+      # .password_digest == params["password"]
       session.clear
       session["user_id"] = @user.id
       redirect to "/user/#{@user.slug}"

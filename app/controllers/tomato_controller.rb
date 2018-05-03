@@ -11,16 +11,11 @@ class TomatoController < ApplicationController
   end
 
   post '/tomatoes' do
-    @tomato = Tomato.new
-    @tomato.variety = params["variety"]
-    @tomato.growth_type = params["indeterminate"] || params["determinate"]
-    @tomato.days = params["days"]
-    @tomato.details = params["details"]
-    @tomato.save
-
-    @user = User.find_by_id(session["user_id"])
-    @tomato.user_id = @user.id
-    @tomato.save
+    
+      @tomato = current_user.tomatoes.create(variety: params["variety"], 
+                            growth_type: params["indeterminate"] || params["determinate"],
+                            days: params["days"],
+                            details: params["details"])
 
     redirect to "/tomatoes/#{@tomato.id}"
   end
